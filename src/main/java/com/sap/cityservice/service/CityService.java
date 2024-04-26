@@ -49,4 +49,8 @@ public class CityService {
         cityModel.setDensity(cityModel.getPopulation() / cityModel.getArea());
         return cityRepository.save(cityModel);
     }
+
+    public long count() {
+        return cityRepository.count();
+    }
 }

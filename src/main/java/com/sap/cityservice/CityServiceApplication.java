@@ -25,6 +25,13 @@ public class CityServiceApplication {
 	@Bean
 	CommandLineRunner runner(CityService cityService){
 		return args -> {
+
+			long cityCount = cityService.count();
+			if (cityCount >= 215) {
+				System.out.println("Cities already present in the database. Skipping save operation.");
+				return;
+			}
+
 			// read JSON and load json OR JSON parsing
 			ObjectMapper mapper = new ObjectMapper();
 			TypeReference<List<CityModel>> typeReference = new TypeReference<List<CityModel>>(){};
